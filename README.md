@@ -30,7 +30,7 @@ has_many :purchases
 | delivery_day_id | integer | null: false |
 | price           | integer | null: false |
 | information     | text    | null: false |
-| user            | references | null: false |
+| user            | references | foreign_key: true  |
 
 ### Association
 belongs_to :user
