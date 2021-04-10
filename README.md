@@ -46,7 +46,7 @@ Column       | Type        | Options           |
 | product    | references  | foreign_key: true |
 
 ### Association
-has_one :product("親")
+belongs_to :product("親")
 belongs_to :user
 has_many :shippings
 
@@ -60,7 +60,7 @@ has_many :shippings
 | postal_code        | string     | null: false       |
 | area_id            | integer    | null: false       |
 | municipal_district | string     | null: false       |
-| number             | string     | null: false       |
+| address_number     | string     | null: false       |
 | phone_number       | string     | null: false       |
 | purchase           | references | foreign_key: true |
 ### Association
