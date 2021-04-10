@@ -39,7 +39,7 @@ has_one :purchase("子")
 
 
 
-## purchase
+## purchases
 Column       | Type        | Options           |
 | ---------- | ----------- | ----------------- |
 | user       | references  | foreign_key: true |
@@ -48,7 +48,7 @@ Column       | Type        | Options           |
 ### Association
 belongs_to :product("親")
 belongs_to :user
-has_many :shippings
+has_one :shipping
 
 
 
