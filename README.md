@@ -60,7 +60,7 @@ has_many :shippings
 | postal_code        | string     | null: false       |
 | area_id            | integer    | null: false       |
 | municipal_district | string     | null: false       |
-| address_number     | string     | null: false       |
+| address_number     | string     |
 | phone_number       | string     | null: false       |
 | purchase           | references | foreign_key: true |
 ### Association
