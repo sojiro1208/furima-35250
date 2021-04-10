@@ -1,6 +1,6 @@
 # README
 
-## user
+## users
  Column              | Type    | Options                   |
 | ------------------ | ------- | ------------------------- |
 | first_name         | string  | null: false               |
@@ -19,19 +19,18 @@ has_many :purchases
 
 
 
-## product
- Column          | Type    | Options     |
-| -------------- | ------- | ----------- |
-| name           | string  | null: false |
-| burden         | text    | null: false |
-| category_id    | integer | null: false |
-| status_id      | integer | null: false |
-| explanation_id | integer | null: false |
-| area_id        | integer | null: false |
-| days_id        | integer | null: false |
-| price          | integer | null: false |
-| information    | text    | null: false |
-| seller         | string  | null: false |
+## products
+ Column           | Type    | Options     |
+| --------------- | ------- | ----------- |
+| name            | string  | null: false |
+| category_id     | integer | null: false |
+| status_id       | integer | null: false |
+| explanation_id  | integer | null: false |
+| area_id         | integer | null: false |
+| delivery_day_id | integer | null: false |
+| price           | integer | null: false |
+| information     | text    | null: false |
+| user            | references | null: false |
 
 ### Association
 belongs_to :user
@@ -54,15 +53,15 @@ has_many :shippings
 
 
 
-## shipping名
- Column              | Type    | Options       |
-| ------------------ | ------- | ------------- |
-| address            | string  | null: false	 |
-| postal_code        | string  | null: false	 |
-| area_id            | integer | null: false	 |
-| municipal_district | string  | null: false	 |
-| number             | string  | null: false	 |
-| phone_number       | string  | null: false	 |
-
+## shippings
+ Column              | Type       | Options           |
+| ------------------ | ---------- | ----------------- |
+| address            | string     | null: false       |
+| postal_code        | string     | null: false       |
+| area_id            | integer    | null: false       |
+| municipal_district | string     | null: false       |
+| number             | string     | null: false       |
+| phone_number       | string     | null: false       |
+| purchase           | references | foreign_key: true |
 ### Association
 belongs_to :purchase
