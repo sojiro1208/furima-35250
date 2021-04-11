@@ -6,9 +6,14 @@ RSpec.describe User, type: :model do
       @user = FactoryBot.build(:user)
     end
 
+   context '登録ができる時' do
+
     it '全部埋めれば登録できる' do
       expect(@user).to be_valid
     end
+   end
+
+   context '登録ができない時' do
 
     it 'ニックネームが空では登録できない' do
       @user.nickname = ''
@@ -128,12 +133,12 @@ RSpec.describe User, type: :model do
       expect(@user.errors.full_messages).to include("Email is invalid")
     end
 
-    it '全角では登録できないこと' do
+    it '全角では登録できない' do
       @user.password = "A1A1A1"
       @user.password_confirmation = 'A1A1A1'
       @user.valid?
       expect(@user.errors.full_messages).to include("Password is invalid")
     end
-
+   end
   end
 end
