@@ -1,3 +1,4 @@
+# ユーザー登録のバリデーション
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -18,7 +19,7 @@ class User < ApplicationRecord
   validates :birthday,        presence: true
   
   PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
-  validates_format_of :password, with: PASSWORD_REGEX, message: "Include both letters and numbers"
+  validates_format_of :password, with: PASSWORD_REGEX, message: "Include both letters and numbers", length: { minimum: 6 }
 
   # has_many :products
   # has_many :purchases
