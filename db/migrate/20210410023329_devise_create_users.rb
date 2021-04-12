@@ -1,3 +1,4 @@
+# ユーザー登録のマイグレーション
 # frozen_string_literal: true
 
 class DeviseCreateUsers < ActiveRecord::Migration[6.0]
