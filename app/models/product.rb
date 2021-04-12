@@ -13,18 +13,19 @@ class Product < ApplicationRecord
   validates :name,           presence: true
   validates :category_id,         presence: true
   validates :status_id,           presence: true
-  validates :explanation_id,      presence: true
+  validates :shipping_id,      presence: true
   validates :area_id,             presence: true
   validates :delivery_day_id,     presence: true
-  validates :price,               presence: true
+  validates :price,                numericality: { with: /\A[0-9]+\z/ }, length: { maximum: 7 }, presence: true
   validates :information,            presence: true
   validates :user,             presence: true
+  validates :image,           presence: true
 
   validates :category_id,     numericality: { other_than: 1 } 
   validates :status_id,       numericality: { other_than: 1 } 
-  validates :explanation_id,  numericality: { other_than: 1 } 
+  validates :shipping_id,  numericality: { other_than: 1 } 
   validates :area_id,         numericality: { other_than: 1 } 
   validates :delivery_day_id, numericality: { other_than: 1 } 
-
-  
+  # numericality→数字のバリデーション
+ 
 end
