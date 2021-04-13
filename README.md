@@ -25,7 +25,7 @@ has_many :purchases
 | name            | string  | null: false |
 | category_id     | integer | null: false |
 | status_id       | integer | null: false |
-| explanation_id  | integer | null: false |
+| shipping_id  | integer | null: false |
 | area_id         | integer | null: false |
 | delivery_day_id | integer | null: false |
 | price           | integer | null: false |

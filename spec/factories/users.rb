@@ -1,3 +1,4 @@
+# ユーザーFactoryBot
 FactoryBot.define do
   factory :user do
     nickname {"ファルコンランチ"}
