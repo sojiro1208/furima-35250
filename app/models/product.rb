@@ -16,7 +16,7 @@ class Product < ApplicationRecord
   validates :shipping_id,      presence: true
   validates :area_id,             presence: true
   validates :delivery_day_id,     presence: true
-  validates :price,                numericality: { with: /\A[0-9]+\z/ }, length: { maximum: 7 }, presence: true
+  validates :price,                numericality: { with: /\A[0-9]+\z/ }, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }, presence: true
   validates :information,            presence: true
   validates :user,             presence: true
   validates :image,           presence: true
