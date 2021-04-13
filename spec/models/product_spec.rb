@@ -65,7 +65,7 @@ RSpec.describe Product, type: :model do
       end
 
       it 'priceが299円では登録できぬ' do
-        @product.price = '299'
+        @product.price = 299
         @product.valid?
         expect(@product.errors.full_messages).to include("Price must be greater than or equal to 300")
       end
@@ -82,6 +82,41 @@ RSpec.describe Product, type: :model do
         expect(@product.errors.full_messages).to include("Image can't be blank")
       end
 
+      it 'category_idが1では登録できぬ' do
+        @product.category_id = 1
+        @product.valid?
+        expect(@product.errors.full_messages).to include("Category must be other than 1")
+      end
+
+      it 'status_idが1では登録できぬ' do
+        @product.status_id = 1
+        @product.valid?
+        expect(@product.errors.full_messages).to include("Status must be other than 1")
+      end
+
+      it 'shipping_idが1では登録できぬ' do
+        @product.shipping_id = 1
+        @product.valid?
+        expect(@product.errors.full_messages).to include("Shipping must be other than 1")
+      end
+
+      it 'area_idが1では登録できぬ' do
+        @product.area_id = 1
+        @product.valid?
+        expect(@product.errors.full_messages).to include("Area must be other than 1")
+      end
+
+      it 'delivery_day_idが1では登録できぬ' do
+        @product.delivery_day_id = 1
+        @product.valid?
+        expect(@product.errors.full_messages).to include("Delivery day must be other than 1")
+      end
+
+      it 'priceが10000000円では登録できぬ' do
+        @product.price = 10000000
+        @product.valid?
+        expect(@product.errors.full_messages).to include("Price must be less than or equal to 9999999")
+      end
     end
   end
 end
