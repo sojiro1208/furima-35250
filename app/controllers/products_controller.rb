@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :show, :edit] #←ログインしていない状態だとログインを促す
+  before_action :authenticate_user!, only: [:new, :create, :show, :edit, :update] #←ログインしていない状態だとログインを促す
   before_action :move_to_index, only:[:edit] #⇦指定したアクションがリクエストされた場合、アクションの前に処理を行う
   before_action :set_product, only:[:show, :edit, :update]
 
