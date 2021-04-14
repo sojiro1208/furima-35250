@@ -1,7 +1,8 @@
 class ProductsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create] #←ログインしていない状態だとログインを促す
-
-  # before_action :move_to_index, only:[:new, :create] ⇦指定したアクションがリクエストされた場合、アクションの前に処理を行う
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update] #←ログインしていない状態だとログインを促す
+  before_action :set_product, only:[:show, :edit, :update]
+  before_action :move_to_index, only:[:edit, :update] #⇦指定したアクションがリクエストされた場合、アクションの前に処理を行う
+  
 
 
     def index
@@ -22,7 +23,17 @@ class ProductsController < ApplicationController
     end
 
     def show
-      @product = Product.find(params[:id])
+    end
+
+    def edit
+    end
+
+    def update
+      if  @product.update(product_params)
+        redirect_to product_path(@product.id)
+      else
+        render :edit
+      end
     end
 
     private
@@ -30,10 +41,14 @@ class ProductsController < ApplicationController
       params.require(:product).permit(:name, :category_id, :status_id, :shipping_id, :area_id, :delivery_day_id, :price, :information, :image).merge(user_id: current_user.id)
     end
 
-    # def move_to_index
-    #   unless user_signed_in?
-    #     redirect_to action: :index
-    #   end
-    # end
+    def set_product
+      @product = Product.find(params[:id])
+    end
+
+    def move_to_index
+      unless @product.user == current_user
+        redirect_to action: :index
+      end
+    end
     # befor actionの処理内容↑
 end
