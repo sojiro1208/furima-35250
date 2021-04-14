@@ -1,7 +1,8 @@
 class ProductsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :show, :edit, :update] #←ログインしていない状態だとログインを促す
-  before_action :move_to_index, only:[:edit, :update] #⇦指定したアクションがリクエストされた場合、アクションの前に処理を行う
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update] #←ログインしていない状態だとログインを促す
   before_action :set_product, only:[:show, :edit, :update]
+  before_action :move_to_index, only:[:edit, :update] #⇦指定したアクションがリクエストされた場合、アクションの前に処理を行う
+  
 
 
     def index
@@ -45,7 +46,6 @@ class ProductsController < ApplicationController
     end
 
     def move_to_index
-      @product = Product.find(params[:id])
       unless @product.user == current_user
         redirect_to action: :index
       end
