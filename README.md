@@ -48,12 +48,12 @@ Column       | Type        | Options           |
 ### Association
 belongs_to :product("親")
 belongs_to :user
-has_one :shipping
+has_one :send
 
 
 
 
-## shippings
+## sends
  Column              | Type       | Options           |
 | ------------------ | ---------- | ----------------- |
 | address            | string     | null: false       |
