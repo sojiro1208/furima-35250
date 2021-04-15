@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update] #←ログインしていない状態だとログインを促す
-  before_action :set_product, only:[:show, :edit, :update]
-  before_action :move_to_index, only:[:edit, :update] #⇦指定したアクションがリクエストされた場合、アクションの前に処理を行う
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy] #←ログインしていない状態だとログインを促す
+  before_action :set_product, only:[:show, :edit, :update, :destroy]
+  before_action :move_to_index, only:[:edit, :update, :destroy] #⇦指定したアクションがリクエストされた場合、アクションの前に処理を行う
   
 
 
@@ -34,6 +34,11 @@ class ProductsController < ApplicationController
       else
         render :edit
       end
+    end
+
+    def destroy
+      @product.destroy
+      redirect_to root_path 
     end
 
     private
