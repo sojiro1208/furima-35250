@@ -18,6 +18,6 @@ class PurchaseSend
 
   def save
     purchase = Purchase.create(user_id: user_id, product_id: product_id)
-    Send.create(postal_code: postal_code, area_id: area_id, municipal_district: municipal_district, address_number: address_number, name: name, phone_number: phone_number, purchase_id: purchase.id)
+    SendAddress.create(postal_code: postal_code, area_id: area_id, municipal_district: municipal_district, address_number: address_number, name: name, phone_number: phone_number, purchase_id: purchase.id)
   end
 end
