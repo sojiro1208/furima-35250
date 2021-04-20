@@ -1,7 +1,8 @@
-class Product < ApplicationRecord
+class Product < ApplicationRecord#←モデルの根幹
 
   belongs_to :user
   has_one_attached :image
+  has_one :purchase
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
@@ -32,5 +33,4 @@ class Product < ApplicationRecord
     validates :area_id
     validates :delivery_day_id
   end
- 
 end

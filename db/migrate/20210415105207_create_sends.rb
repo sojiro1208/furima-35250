@@ -1,7 +1,6 @@
 class CreateSends < ActiveRecord::Migration[6.0]
   def change
     create_table :sends do |t|
-      t.string     :address,            null: false
       t.string     :postal_code,        null: false
       t.integer    :area_id,            null: false
       t.string     :municipal_district, null: false
