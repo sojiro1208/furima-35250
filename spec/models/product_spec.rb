@@ -14,6 +14,8 @@ RSpec.describe Product, type: :model do
       end
     end
 
+
+
     context '登録ができない時' do
 
       it 'nameが空では登録できぬ' do
