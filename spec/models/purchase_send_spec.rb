@@ -15,7 +15,7 @@ RSpec.describe PurchaseSend, type: :model do
         expect(@purchase).to be_valid
       end
 
-      it '建物名何からでも登録できる' do
+      it '建物名が空でも登録できる' do
         @purchase.name = ''
         expect(@product).to be_valid
       end
