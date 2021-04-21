@@ -6,8 +6,8 @@ class CreateSendAddresses < ActiveRecord::Migration[6.0]
       t.string     :municipal_district, null: false
       t.string     :address_number,     null: false
       t.string     :phone_number,       null: false
+      t.string     :name
       t.references :purchase,           foreign_key: true
-
       t.timestamps
     end
   end
