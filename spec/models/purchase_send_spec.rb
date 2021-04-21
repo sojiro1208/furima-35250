@@ -14,6 +14,11 @@ RSpec.describe PurchaseSend, type: :model do
       it '全部埋めれば登録できる' do
         expect(@purchase).to be_valid
       end
+
+      it '建物名何からでも登録できる' do
+        @purchase.name = ''
+        expect(@product).to be_valid
+      end
     end
 
     context '登録できない時' do
@@ -90,10 +95,28 @@ RSpec.describe PurchaseSend, type: :model do
         expect(@purchase.errors.full_messages).to include("Phone number is invalid")
       end
 
+      it '電話番号が英数字の場合登録できない' do
+        @purchase.phone_number = 'aaa1111aa11'
+        @purchase.valid?
+        expect(@purchase.errors.full_messages).to include("Phone number is invalid")
+      end
+
       it 'tokenがからの場合登録できない' do
         @purchase.token = ''
         @purchase.valid?
         expect(@purchase.errors.full_messages).to include("Token can't be blank")
+      end
+
+      it 'user_idがからの場合登録できない' do
+        @purchase.user_id = ''
+        @purchase.valid?
+        expect(@purchase.errors.full_messages).to include("User can't be blank")
+      end
+
+      it 'product_idがからの場合登録できない' do
+        @purchase.product_id = ''
+        @purchase.valid?
+        expect(@purchase.errors.full_messages).to include("Product can't be blank")
       end
     end
   end

@@ -1,15 +1,14 @@
 # 購入のコントローラー
 class PurchasesController < ApplicationController
   before_action :authenticate_user!, only: [:index, :create] #←ログインしていない状態だとログインを促す
+  before_action :set_product, only:[:index, :create]
   before_action :move_to_index, only:[:index, :create]
 
   def index
-    @product = Product.find(params[:product_id])
     @purchase_send = PurchaseSend.new
   end
 
   def create
-    @product = Product.find(params[:product_id])
     @purchase_send = PurchaseSend.new(parchase_params)
     if @purchase_send.valid?
       pay_item
@@ -21,6 +20,10 @@ class PurchasesController < ApplicationController
   end
   
   private
+
+  def set_product
+    @product = Product.find(params[:product_id])
+  end
 
   def parchase_params
     params.require(:purchase_send).permit(:postal_code, :area_id, :municipal_district, :address_number, :name, :phone_number).merge(user_id: current_user.id, product_id: params[:product_id], token: params[:token])
@@ -37,7 +40,7 @@ class PurchasesController < ApplicationController
   end
 
   def move_to_index
-    @product = Product.find(params[:product_id])
+    set_product
     if @product.purchase.present? || @product.user.id == current_user.id
         redirect_to root_path
     end
