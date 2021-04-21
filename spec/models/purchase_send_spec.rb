@@ -30,19 +30,19 @@ RSpec.describe PurchaseSend, type: :model do
       end
 
       it '郵便番号が「-」がない場合登録できない' do
-        @purchase.postal_code = 0000000
+        @purchase.postal_code = '0000000'
         @purchase.valid?
         expect(@purchase.errors.full_messages).to include("Postal code is invalid")
       end
 
       it '郵便番号が足りない場合登録できない' do
-        @purchase.postal_code = 0-0
+        @purchase.postal_code = '0-0'
         @purchase.valid?
         expect(@purchase.errors.full_messages).to include("Postal code is invalid")
       end
 
       it '郵便番号が多い場合登録できない' do
-        @purchase.postal_code = 0000-00000
+        @purchase.postal_code = '0000-00000'
         @purchase.valid?
         expect(@purchase.errors.full_messages).to include("Postal code is invalid")
       end
@@ -78,19 +78,19 @@ RSpec.describe PurchaseSend, type: :model do
       end
 
       it '電話番号が９以下場合登録できない' do
-        @purchase.phone_number = 000000000
+        @purchase.phone_number = '000000000'
         @purchase.valid?
         expect(@purchase.errors.full_messages).to include("Phone number is invalid")
       end
 
       it '電話番号が１２以上ある場合登録できない' do
-        @purchase.phone_number = 000000000000
+        @purchase.phone_number = '000000000000'
         @purchase.valid?
         expect(@purchase.errors.full_messages).to include("Phone number is invalid")
       end
 
       it '電話番号にハイフンがある場合登録できない' do
-        @purchase.phone_number = 000-0000-0000
+        @purchase.phone_number = '000-0000-0000'
         @purchase.valid?
         expect(@purchase.errors.full_messages).to include("Phone number is invalid")
       end

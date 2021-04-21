@@ -40,7 +40,6 @@ class PurchasesController < ApplicationController
   end
 
   def move_to_index
-    set_product
     if @product.purchase.present? || @product.user.id == current_user.id
         redirect_to root_path
     end
