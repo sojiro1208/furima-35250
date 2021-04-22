@@ -19,7 +19,7 @@ class User < ApplicationRecord
   validates :birthday,        presence: true
   
   
-  validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[\w-]{8,128}+\z/i }, length: { minimum: 6 }
+  validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[\w-]{6,128}+\z/i }
 
   has_many :products
   has_many :purchases
