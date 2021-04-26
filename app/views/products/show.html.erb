@@ -77,20 +77,27 @@
     </div>
   </div>
   <%# /商品の概要 %>
-
   <div class="comment-box">
-    <form>
-      <textarea class="comment-text"></textarea>
-      <p class="comment-warn">
-        相手のことを考え丁寧なコメントを心がけましょう。
-        <br>
-        不快な言葉遣いなどは利用制限や退会処分となることがあります。
-      </p>
-      <button type="submit" class="comment-btn">
-        <%= image_tag "comment.png" ,class:"comment-flag-icon" ,width:"20",height:"25"%>
-        <span>コメントする<span>
-      </button>
-    </form>
+      <%= form_with model: [@product, @message] do |f| %>
+        
+        <div id='messages'>
+          <% @messages.reverse_each do |message| %>
+            <div class="message">
+              <div class="message-user"><p><%= message.user.nickname %>さん</p></div>
+              <div class="message-text"><p><%= safe_join(message.text.split("\n"),tag(:br)) %></p></div>
+              <div class="message-time"><p><%= message.created_at.to_s(:datetime_jp) %></p></div>
+            </div>
+          <% end %>
+        </div>
+        <%= f.text_area :text, class:"comment-text" %>
+        <p class="comment-warn">
+          相手のことを考え丁寧なコメントを心がけましょう。
+          <br>
+          不快な言葉遣いなどは利用制限や退会処分となることがあります。
+        </p>
+          <%= f.submit "コメントする" ,class:"comment-btn" do %>
+          <% end %>
+      <% end %>
   </div>
   <div class="links">
     <a href="#" class="change-item-btn">

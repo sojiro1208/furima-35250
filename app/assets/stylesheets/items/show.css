@@ -139,7 +139,7 @@
 }
 
 
-/* /商品の概要 */
+/* /商品の概要 コメントの所 */
 
 .comment-box {
   width: 40vw;
@@ -154,6 +154,34 @@
   padding: 10px;
   border: solid 2px #dedede;
   resize: none;
+}
+
+.message {
+  text-align: left;
+  background-color: #EEFFFF;
+  border: 1px solid #3CCACE;
+  border-radius: 100px;
+  margin: 30px;
+  padding: 10px 30px 30px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items:baseline;
+}
+
+.message-user {
+  font-size: 13px;
+  font-weight:bolder;
+  padding: 10px;
+}
+
+.message-text {
+  font-size: 15px;
+}
+
+.message-time {
+  font-size: 10px;
+  color: darkgray;
+  padding: 20px 10px 0px 280px;
 }
 
 .comment-warn {

@@ -3,6 +3,7 @@ class Product < ApplicationRecord#←モデルの根幹
   belongs_to :user
   has_one_attached :image
   has_one :purchase
+  has_many :messages
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category

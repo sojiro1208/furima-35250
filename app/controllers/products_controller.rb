@@ -23,6 +23,8 @@ class ProductsController < ApplicationController
     end
 
     def show
+      @messages = Message.all.order(created_at: :desc)
+      @message = Message.new
     end
 
     def edit
