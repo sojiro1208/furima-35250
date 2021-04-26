@@ -23,7 +23,9 @@ class ProductsController < ApplicationController
     end
 
     def show
-      @messages = Message.all.order(created_at: :desc)
+      # @messages = Message.all.order(created_at: :desc)
+      # @product = Product.find(params[:id])
+      @messages = @product.messages.order(created_at: :desc)
       @message = Message.new
     end
 
